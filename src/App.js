@@ -49,6 +49,23 @@ class App extends React.Component {
 
 
 
+  toggleButton = itemId => {
+    this.setState({
+      todoList: this.state.todoList.map(element => {
+        if(itemId === element.id){
+          return {
+            ...element,
+            completed: !element.completed
+          };
+        }
+        return element;
+      })
+    });
+  }
+
+
+
+
   changeHandler = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -86,7 +103,10 @@ class App extends React.Component {
 
           <h3>This project is confusion..</h3>
 
-          <TodoList todoList={this.state.todoList} />
+          <TodoList 
+          todoList={this.state.todoList} 
+          toggleButton={this.toggleButton}
+          />
 
           <TodoForm
           title={this.state.title}

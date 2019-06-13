@@ -3,9 +3,13 @@ import React from 'react';
 
 
 const Todo = (props) => {
+    console.log(props)
     return(
-        <div>
-            {props.todo}
+        <div
+        className={`${props.todo.completed ? ' todo-lines': ''}`}
+        onClick={() => props.toggleButton(props.todo.id)}
+        >
+            {props.todo.title}
         </div>
     )
 };
