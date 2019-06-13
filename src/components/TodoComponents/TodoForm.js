@@ -3,12 +3,13 @@ import "./Todo.css"
 
 
 const TodoForm = (props) => {
+    console.log(props)
     return(
-        <form>
-            <imput
+        <form onSubmit={props.addTask}>
+            <input
                 placeholder='...todo'
                 type='text'
-                name='your-todo'
+                name='title'
                 onChange={props.changeHandler}
                 value={props.title}
             />
