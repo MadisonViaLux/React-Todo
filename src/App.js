@@ -1,58 +1,49 @@
-import React from 'react';
-import TodoForm from './components/TodoComponents/TodoForm'
-import TodoList from './components/TodoComponents/TodoList'
-import './components/TodoComponents/Todo.scss';
-
+import React from "react";
+import TodoForm from "./components/TodoComponents/TodoForm";
+import TodoList from "./components/TodoComponents/TodoList";
+import "./components/TodoComponents/Todo.scss";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state.
 
-
-
-  state= {
+  state = {
     todoList: [
       {
         id: 1,
-        title: 'YYYEEEEAAAHHH BOOOIIIIIIIII',
-        completed: false,
+        title: "YYYEEEEAAAHHH BOOOIIIIIIIII",
+        completed: false
       },
-
 
       {
         id: 2,
-        title: 'what the heck am I doing?',
-        completed: false,
+        title: "what the heck am I doing?",
+        completed: false
       },
-
 
       {
         id: 3,
-        title: 'today is confusion',
-        completed: false,
+        title: "today is confusion",
+        completed: false
       },
-
 
       {
         id: 4,
         title: 'Toes have no "toe tips", yet we Tip Toe...',
-        completed: false,
-      },
+        completed: false
+      }
     ],
 
-    id: '',
-    title: '',
-    completed: '',
+    id: "",
+    title: "",
+    completed: ""
   };
-
-
-
 
   toggleButton = itemId => {
     this.setState({
       todoList: this.state.todoList.map(element => {
-        if(itemId === element.id){
+        if (itemId === element.id) {
           return {
             ...element,
             completed: !element.completed
@@ -61,58 +52,47 @@ class App extends React.Component {
         return element;
       })
     });
-  }
-
-
-
+  };
 
   changeHandler = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   };
 
-
-
-
-  addTask = event =>{
-    event.preventDefault()
+  addTask = event => {
+    event.preventDefault();
     this.setState({
       todoList: [
         ...this.state.todoList,
         {
           id: Date.now(),
           title: this.state.title,
-          completed: false,
+          completed: false
         }
       ]
-    })
+    });
   };
 
-
-
-
   render() {
-
     // console.log(this.state.todoList)
-    console.log(this.state)
+    console.log(this.state);
 
     return (
-      <div className='theApp'>
-        <div className='container'>
+      <div className="theApp">
+        <div className="container">
+          <h3>This project is NOT confusion..</h3>
 
-          <h3>This project is confusion..</h3>
-
-          <TodoList 
-          todoList={this.state.todoList} 
-          toggleButton={this.toggleButton}
+          <TodoList
+            todoList={this.state.todoList}
+            toggleButton={this.toggleButton}
           />
 
           <TodoForm
-          title={this.state.title}
-          completed={this.state.completed}
-          changeHandler={this.changeHandler}
-          addTask={this.addTask} 
+            title={this.state.title}
+            completed={this.state.completed}
+            changeHandler={this.changeHandler}
+            addTask={this.addTask}
           />
         </div>
       </div>
